@@ -26,6 +26,7 @@
     "recursive": true
   },
   "devDependencies": {
+    "@wordpress/shortcode": "^2.9.0",
     "c8": "^7.2.1",
     "eslint": "^7.4.0",
     "eslint-config-jquery": "^3.0.0",
