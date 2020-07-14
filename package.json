@@ -1,0 +1,46 @@
+{
+  "name": "bots-shortcodes",
+  "version": "1.0.0",
+  "description": "A group of shortcodes used to enhance answers provided by bots",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha",
+    "precoverage": "rimraf ./coverage",
+    "coverage": "c8 mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flindersuni/bots-shortcodes.git"
+  },
+  "author": "Corey Wallis <corey.wallis@flinders.edu.au>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/flindersuni/bots-shortcodes/issues"
+  },
+  "homepage": "https://github.com/flindersuni/bots-shortcodes#readme",
+  "engines": {
+    "node": "^12"
+  },
+  "mocha": {
+    "recursive": true
+  },
+  "devDependencies": {
+    "c8": "^7.2.1",
+    "eslint": "^7.4.0",
+    "eslint-config-jquery": "^3.0.0",
+    "eslint-plugin-jsdoc": "^29.2.0",
+    "eslint-plugin-mocha": "^7.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^8.0.1",
+    "nock": "^13.0.2",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^4.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}
