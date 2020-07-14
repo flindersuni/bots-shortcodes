@@ -1,0 +1,106 @@
+{
+  "locations": [
+    {
+      "lid": 10539,
+      "name": "Online Library",
+      "category": "library",
+      "desc": "",
+      "url": "",
+      "contact": "",
+      "lat": "",
+      "long": "",
+      "color": "#000000",
+      "fn": "",
+      "day": "Friday",
+      "times": {
+        "status": "24hours",
+        "currently_open": true
+      },
+      "rendered": "24 Hours"
+    },
+    {
+      "lid": 10538,
+      "name": "Central (all levels) & Sturt lab",
+      "category": "library",
+      "desc": "",
+      "url": "",
+      "contact": "",
+      "lat": "",
+      "long": "",
+      "color": "#000000",
+      "fn": "",
+      "day": "Friday",
+      "times": {
+        "status": "24hours",
+        "currently_open": true
+      },
+      "rendered": "24 Hours"
+    },
+    {
+      "lid": 4667,
+      "name": "Physical collections (Central)",
+      "category": "library",
+      "desc": "",
+      "url": "",
+      "contact": "",
+      "lat": "-35.020862",
+      "long": "138.569619",
+      "color": "#000000",
+      "fn": "",
+      "day": "Friday",
+      "times": {
+        "status": "24hours",
+        "currently_open": true
+      },
+      "rendered": "24 Hours"
+    },
+    {
+      "lid": 294,
+      "name": "Physical collections (Sturt & Medical)",
+      "category": "library",
+      "desc": "",
+      "url": "",
+      "contact": "",
+      "lat": "-35.018363",
+      "long": "138.575178",
+      "color": "#000000",
+      "fn": "",
+      "day": "Friday",
+      "times": {
+        "status": "open",
+        "hours": [
+          {
+            "from": "9:00am",
+            "to": "5:00pm"
+          }
+        ],
+        "currently_open": true
+      },
+      "rendered": "9:00am - 5:00pm"
+    },
+    {
+      "lid": 260,
+      "name": "Specialist library assistance (all branches)",
+      "category": "library",
+      "desc": "<p>Access Instructions: Student ID required to swipe in<\/p>",
+      "url": "",
+      "contact": "",
+      "lat": "-35.025291",
+      "long": "138.572188",
+      "color": "#000000",
+      "fn": "",
+      "day": "Friday",
+      "times": {
+        "status": "open",
+        "hours": [
+          {
+            "from": "9:00am",
+            "to": "5:00pm"
+          }
+        ],
+        "currently_open": true
+      },
+      "rendered": "9:00am - 5:00pm"
+    }
+  ]
+}

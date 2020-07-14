@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Central library",
+    "lids": [
+      4667,
+      10538,
+      10539,
+      260
+    ]
+  },
+  {
+    "name": "Sturt library",
+    "lids": [
+      294,
+      10538,
+      10539,
+      260
+    ]
+  },
+  {
+    "name": "Medical library",
+    "lids": [
+      294,
+      10539,
+      260
+    ]
+  }
+]
