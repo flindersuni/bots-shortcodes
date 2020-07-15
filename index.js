@@ -75,5 +75,6 @@
 
  }
 
- module.exports.BotsShortcodes = BotsShortcodes;
- module.exports.LibraryOpenToday = require( "./shortcodes/libraryOpenToday.js" ).LibraryOpenToday;
+module.exports.BotsShortcodes = BotsShortcodes;
+module.exports.LibraryOpenToday = require( "./shortcodes/libraryOpenToday.js" ).LibraryOpenToday;
+module.exports.TestingShortcode = require( "./shortcodes/testingShortcode.js" ).TestingShortcode;
