@@ -26,7 +26,6 @@
     "recursive": true
   },
   "devDependencies": {
-    "@wordpress/shortcode": "^2.9.0",
     "c8": "^7.2.1",
     "eslint": "^7.4.0",
     "eslint-config-jquery": "^3.0.0",
@@ -41,6 +40,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
+    "@wordpress/shortcode": "^2.9.0",
     "escape-string-regexp": "^4.0.0",
     "node-fetch": "^2.6.0"
   }
