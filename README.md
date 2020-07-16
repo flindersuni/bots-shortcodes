@@ -21,5 +21,19 @@ for one of the libraries at Flinders. The shortcode uses a single parameter to i
 
 Valid library names are listed in the `resources/libraries.json` file.
 
+### TestingShortcode
+
+The `[bot-shortcode-test]` shortcode is designed to support unit testing of the
+shortcode system in other projects. It is not intended for, or useful in, production
+scenarious.
+
+## Chatbots at Flinders University
+
+Exploring the use of chatbots at [Flinders University][flinders] is a project currently
+underway by the [Business Improvement team][biteam], in collaboration with stakeholders
+across the university.
+
+[biteam]: https://staff.flinders.edu.au/colleges-and-services/ids/dbs/business-improvement
+[flinders]: https://www.flinders.edu.au
 [qnamaker]: https://www.qnamaker.ai/
 [wordpress]: https://wordpress.org/
