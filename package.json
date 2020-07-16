@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "A group of shortcodes used to enhance answers provided by bots",
   "main": "index.js",
+  "private": true,
+  "keywords": [
+    "chatbots",
+    "flinders university",
+    "shortcodes",
+    "university",
+    "academic"
+  ],
   "scripts": {
     "lint": "eslint .",
     "test": "mocha",
