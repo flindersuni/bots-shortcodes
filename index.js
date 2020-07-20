@@ -66,10 +66,6 @@
       answerContent = await shortcode.replace( answerContent );
     }
 
-    this.shortcodes.forEach( async function( element ) {
-      answerContent = await element.replace( answerContent );
-    } );
-
     return answerContent;
   }
 
