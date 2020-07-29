@@ -12,6 +12,40 @@ const { LibCal } = require( "../../services/libCal.js" );
 let institutionID;
 const libraryKey = "central";
 
+/**
+ * Consistently set up the mock API response
+ */
+function setupMockApiResponse() {
+
+  // Disable all http net connections to avoid unexpected outside calls.
+  nock.disableNetConnect();
+
+  // eslint-disable-next-line no-unused-vars
+  const nockScope = nock( "https://api3-au.libcal.com/" )
+    .get( "/api_hours_today.php" )
+    .query( {
+      format: "json",
+      systemTime: "1",
+      iid: institutionID
+    } )
+    .replyWithFile(
+      200,
+      path.join( __dirname, "../artefacts/libcal-api-hours-today.json" ),
+      {
+        "Content-Type": "application/json"
+      }
+    ).persist();
+
+}
+
+/**
+ * Consistently tear down the mock API response
+ */
+function teardownMockApiResponse() {
+  nock.cleanAll();
+  nock.enableNetConnect();
+}
+
 describe( "LibCal", function() {
 
   // Set consistent institution id for testing.
@@ -90,31 +124,12 @@ describe( "LibCal", function() {
 
     // Setup nock library to mock the fetch requests.
     before( function() {
-
-      // Disable all http net connections to avoid unexpected outside calls.
-      nock.disableNetConnect();
-
-      // eslint-disable-next-line no-unused-vars
-      const nockScope = nock( "https://api3-au.libcal.com/" )
-        .get( "/api_hours_today.php" )
-        .query( {
-          format: "json",
-          systemTime: "1",
-          iid: institutionID
-        } )
-        .replyWithFile(
-          200,
-          path.join( __dirname, "../artefacts/libcal-api-hours-today.json" ),
-          {
-            "Content-Type": "application/json"
-          }
-        ).persist();
+      setupMockApiResponse();
     } );
 
     // Restore environment so that fetch requests are no longer mocked.
     after( function() {
-      nock.cleanAll();
-      nock.enableNetConnect();
+      teardownMockApiResponse();
     } );
 
     it( "should accept one argument", async function() {
@@ -160,6 +175,26 @@ describe( "LibCal", function() {
       const libCal = new LibCal( institutionID );
       const libraryTimes = await libCal.getTodayTimes( libraryKey + "invalid" );
       assert.strictEqual( libraryTimes, undefined );
+    } );
+
+    it( "should return the right rendered times for a valid library from the cache when available", async function() {
+      const libCal = new LibCal( institutionID );
+      let libraryTimes = await libCal.getTodayTimes( libraryKey );
+
+      assert.ok(
+        libraryTimes.startsWith( "*Physical collections (Central)*" )
+      );
+
+      libraryTimes = await libCal.getTodayTimes( libraryKey );
+
+      assert.ok(
+        libraryTimes.startsWith( "*Physical collections (Central)*" )
+      );
+
+      const cacheObj = libCal.getCacheStats();
+
+      assert.strictEqual( cacheObj.hits, 2 );
+      assert.strictEqual( cacheObj.misses, 1 );
     } );
   } );
 
@@ -217,6 +252,41 @@ describe( "LibCal", function() {
         TypeError
       );
     } );
+  } );
+
+  describe( "#getCacheStats", function() {
+
+    // Setup nock library to mock the fetch requests.
+    before( function() {
+      setupMockApiResponse();
+    } );
+
+    // Restore environment so that fetch requests are no longer mocked.
+    after( function() {
+      teardownMockApiResponse();
+    } );
+
+
+    it( "should return an object containing stats from the memory cache",  async function() {
+      const libCal = new LibCal( institutionID );
+      await libCal.getTodayTimes( libraryKey );
+      const cacheObj = libCal.getCacheStats();
+
+      assert.ok( typeof cacheObj === "object" );
+
+    } );
+
+    it( "should return an object containing the right stats",  async function() {
+      const libCal = new LibCal( institutionID );
+      await libCal.getTodayTimes( libraryKey );
+      await libCal.getTodayTimes( libraryKey );
+      const cacheObj = libCal.getCacheStats();
+
+      assert.strictEqual( cacheObj.hits, 2 );
+      assert.strictEqual( cacheObj.misses, 1 );
+
+    } );
+
   } );
 
   describe( "#getTodayTimes - server error", function() {

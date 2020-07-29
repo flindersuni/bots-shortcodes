@@ -5,6 +5,7 @@
 
 const fetch = require( "node-fetch" );
 const escapeStringRegexp = require( "escape-string-regexp" );
+const NodeCache = require( "node-cache" );
 
 class LibCal {
 
@@ -30,6 +31,14 @@ class LibCal {
 
     // Load the list of libraries
     this.libraries = require( "../resources/libraries.json" );
+
+    // Initialise the in memory cache
+    this.cache = new NodeCache(
+      {
+        stdTTL: 3600,
+        checkperiod: 5400
+      }
+    );
   }
 
   /**
@@ -48,6 +57,15 @@ class LibCal {
   }
 
   /**
+   * Get the statistics from the in memory cache.
+   *
+   * @returns {object} An object with cache stats.
+   */
+  getCacheStats() {
+    return this.cache.getStats();
+  }
+
+  /**
    * Get the opening hours for today.
    *
    * @param {string} library The name, or part of the name, of a library.
@@ -61,6 +79,10 @@ class LibCal {
 
     if ( typeof library !== "string" ) {
       throw new TypeError( "library argument must be a string" );
+    }
+
+    if ( this.cache.get( library ) !== undefined ) {
+      return this.cache.get( library );
     }
 
     const url = this.apiHost + this.apiTodayHours + this.iid;
@@ -98,6 +120,8 @@ class LibCal {
         } );
       }
     }
+
+    this.cache.set( library, openTimes );
 
     return openTimes;
   }
