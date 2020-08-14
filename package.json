@@ -1,6 +1,6 @@
 {
   "name": "bots-shortcodes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A group of shortcodes used to enhance answers provided by bots",
   "main": "index.js",
   "private": true,
@@ -34,17 +34,17 @@
     "recursive": true
   },
   "devDependencies": {
-    "c8": "^7.2.1",
-    "eslint": "^7.5.0",
+    "c8": "^7.3.0",
+    "eslint": "^7.6.0",
     "eslint-config-jquery": "^3.0.0",
-    "eslint-plugin-jsdoc": "^29.2.0",
-    "eslint-plugin-mocha": "^7.0.1",
+    "eslint-plugin-jsdoc": "^30.2.2",
+    "eslint-plugin-mocha": "^8.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "mocha": "^8.0.1",
-    "nock": "^13.0.3",
+    "mocha": "^8.1.1",
+    "nock": "^13.0.4",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
