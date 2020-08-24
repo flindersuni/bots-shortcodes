@@ -33,8 +33,29 @@
   "mocha": {
     "recursive": true
   },
+  "commitlint": {
+    "plugins": [
+      "commitlint-plugin-jira-rules"
+    ],
+    "extends": [
+      "jira"
+    ],
+    "rules": {
+      "jira-task-id-project-key": [
+        2, "always", "BOTS"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "npx commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
     "c8": "^7.3.0",
+    "commitlint-config-jira": "^1.4.1",
+    "commitlint-plugin-jira-rules": "^1.4.0",
     "eslint": "^7.6.0",
     "eslint-config-jquery": "^3.0.0",
     "eslint-plugin-jsdoc": "^30.2.2",
@@ -43,6 +64,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
     "mocha": "^8.1.1",
     "nock": "^13.0.4",
     "rimraf": "^3.0.2"
