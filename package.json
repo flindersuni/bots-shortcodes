@@ -73,6 +73,6 @@
     "@wordpress/shortcode": "^2.9.0",
     "escape-string-regexp": "^4.0.0",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   }
 }
